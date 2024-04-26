@@ -1,4 +1,4 @@
-const { User, Thoughts, Reaction } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
     getAllUsers(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
             .populate('thoughts')
             .populate('friends')
             .then (user => {
-                if (!user => {
+                if (!user) {
                     return res.status(404).json({ message: 'No user found with this id.'})
                 }
                 res.json(user)
@@ -83,8 +83,8 @@ module.exports = {
             }
             res.json(user);
         }).catch(err => res.status(500).json(err));
-    };
-  }
+    }
+  };
 
 
 
