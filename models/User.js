@@ -80,7 +80,7 @@ const userSchema = new Schema({
     toJSON: {
         virtuals: true
     },
-    id: false,
+    id: true,
     timestamps: true // Automatically manage createdAt and updatedAt fields
 });
 

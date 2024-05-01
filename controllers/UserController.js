@@ -44,17 +44,48 @@ module.exports = {
     }, 
     
     // Delete user
+
     deleteUser(req, res) {
-        User.findByIdAndDelete(req.params.id)
-            .then(user => {
-                if (!user) {
-                    return res.status(404).json({ message: 'No user found with this id' });
-                }
-                return Thought.deleteMany({ _id: { $in: user.thoughts }});
-            })
-            .then(() => res.json({ message: "User and User Thoughts deleted" }))
-            .catch(err => res.status(500).json(err));
-            },
+        User.findOneAndDelete({ _id: req.params.id })
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ message: 'No user found with this id' });
+            }
+            return Thought.deleteMany({ _id: { $in: user.thoughts } });
+        })
+        .then(() => res.json({ message: "User and thoughts deleted" }))      
+        .catch(err => res.status(500).json(err));
+    },
+
+
+    // deleteUser(req, res) {
+    // User.findByIdAndDelete(req.params.id)
+    // .then(user => {
+    //     if (!user) {
+    //         return res.status(404).json({ message: 'No user found with this id' });
+    //     }
+    //     if (user.thoughts && user.thoughts.length > 0) {
+    //         return Thought.deleteMany({ _id: { $in: user.thoughts } });
+    //     }
+    //     return Promise.resolve(); 
+    // })
+    // .then(() => res.json({ message: "User and User Thoughts deleted" }))
+    // .catch(err => res.status(500).json(err));
+    // },
+
+
+    // deleteUser(req, res) {
+    //     console.log("DELETE USER");
+    //     User.findByIdAndDelete(req.params.id)
+    //         .then(user => {
+    //             if (!user) {
+    //                 return res.status(404).json({ message: 'No user found with this id' });
+    //             }
+    //             return Thought.deleteMany({ _id: { $in: user.thoughts }});
+    //         })
+    //         .then(() => res.json({ message: "User and User Thoughts deleted" }))
+    //         .catch(err => res.status(500).json(err));
+    //         },
 
 
     // Add friend

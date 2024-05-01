@@ -13,7 +13,7 @@ const {
 
 router.get('/', getAllThoughts);  //working
 router.get('/:id', getThoughtById); //working
-router.post('/', createThought); // not working
+router.post('/', createThought); // not working - see notes in Thought Controller.js
 router.put('/:id', updateThought); //working
 router.delete('/:id', deleteThought); //working
 router.post('/:thoughtId/reactions', addReaction);

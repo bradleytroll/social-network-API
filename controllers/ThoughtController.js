@@ -23,11 +23,32 @@ getThoughtById(req, res) {
 },
 
 // Create a new thought
+
+// createThought(req, res) {
+//     Thought.create(req.body)
+//         .then((Thought) => {
+//             return User.findByIdAndUpdate(
+//             req.body.userId,
+//             { $push: { thoughts: Thought._id } },
+//             { new: true }
+//           );
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             return res.status(500).json(err);
+//         });
+// },
+
+
 createThought(req, res) {
     Thought.create(req.body)
     .then(thought => {
+        //console.log(thought);
         return User.findByIdAndUpdate(
-        req.body.userId,
+        req.params.id, req.body,
+        console.log(req.params.id, req.body),
+        // Code is breaking here. New thoughts are being added and can be shown through a GET request, but still receiving 404 error and undefined for console log
+        // Need to find user by id and update thoughts array
         { $push: { thoughts: thought._id }},
         { new: true }
     );
