@@ -11,11 +11,11 @@ const {
     removeReaction
 } = require('../../controllers/ThoughtController');
 
-router.get('/', getAllThoughts);
-router.get('/:id', getThoughtById);
-router.post('/', createThought);
-router.put('/:id', updateThought);
-router.delete('/:id', deleteThought);
+router.get('/', getAllThoughts);  //working
+router.get('/:id', getThoughtById); //working
+router.post('/', createThought); // not working
+router.put('/:id', updateThought); //working
+router.delete('/:id', deleteThought); //working
 router.post('/:thoughtId/reactions', addReaction);
 router.delete('/:thoughtId/reactions', removeReaction);
 
