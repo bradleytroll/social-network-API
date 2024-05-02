@@ -47,4 +47,4 @@ Interested in contributing? Follow these steps:
 [Link to the GitHub repository](https://github.com/bradleytroll/social-network-API)
 
 ## Demonstration Video
-[Link to the demonstration video](https://example.com)
+[Link to the demonstration video](https://drive.google.com/file/d/1x-FgrNIytx1wBYIAYylt_CMLPN1O9Kuv/view)
