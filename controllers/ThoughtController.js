@@ -102,18 +102,20 @@ removeReaction(req, res) {
 
     Thought.findByIdAndUpdate(
         thoughtId,
-        { $pull: { reactions: { _id: reactionId } } }, 
-        { new: true }  
+        { $pull: { reactions: { _id: reactionId } } },
+        { new: true }
+    )
     .then(thought => {
         if (!thought) {
             return res.status(404).json({ message: 'No thought found with that ID' });
         }
         res.json({ message: 'Reaction removed successfully', thought });
-    }))
+    })
     .catch(err => {
         console.error('Error removing reaction:', err);
         res.status(500).json(err);
     });
-},
+}
+
 
 }
