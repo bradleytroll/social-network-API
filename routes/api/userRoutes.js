@@ -15,7 +15,7 @@ router.get('/', getAllUsers); // working
 router.get('/:id', getUserById); // working
 router.post('/', createUser);  // working
 router.put('/:id', updateUser); // working
-router.delete('/:id', deleteUser); // not working
+router.delete('/:id', deleteUser); // working
 router.post('/:userId/friends/:friendId', addFriend);
 router.delete('/:userId/friends/:friendId', removeFriend);
 

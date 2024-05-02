@@ -24,6 +24,8 @@ getThoughtById(req, res) {
 
 // Create a new thought
 
+
+
 // createThought(req, res) {
 //     Thought.create(req.body)
 //         .then((Thought) => {
@@ -40,27 +42,27 @@ getThoughtById(req, res) {
 // },
 
 
-createThought(req, res) {
-    Thought.create(req.body)
-    .then(thought => {
-        //console.log(thought);
-        return User.findByIdAndUpdate(
-        req.params.id, req.body,
-        console.log(req.params.id, req.body),
-        // Code is breaking here. New thoughts are being added and can be shown through a GET request, but still receiving 404 error and undefined for console log
-        // Need to find user by id and update thoughts array
-        { $push: { thoughts: thought._id }},
-        { new: true }
-    );
-    })
-    .then (user => {
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-        res.json({ message: 'Thought created successfully'})
-    })
-    .catch(err => res.status(500).json(err));
-}, 
+// createThought(req, res) {
+//     Thought.create(req.body)
+//     .then(thought => {
+//         //console.log(thought);
+//         return User.findByIdAndUpdate(
+//         req.params.id, req.body,
+//         console.log(req.params.id, req.body),
+//         // Code is breaking here. New thoughts are being added and can be shown through a GET request, but still receiving 404 error and undefined for console log
+//         // Need to find user by id and update thoughts array
+//         { $push: { thoughts: thought._id }},
+//         { new: true }
+//     );
+//     })
+//     .then (user => {
+//         if (!user) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
+//         res.json({ message: 'Thought created successfully'})
+//     })
+//     .catch(err => res.status(500).json(err));
+// }, 
 
 // Update thought by ID
 updateThought(req, res) {
