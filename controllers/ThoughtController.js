@@ -23,7 +23,29 @@ getThoughtById(req, res) {
 },
 
 // Create a new thought
-
+createThought(req, res) {
+    Thought.create(req.body)
+    .then(thought => {
+        console.log('Created thought:', thought);
+        return User.findByIdAndUpdate(
+            req.params.id,
+            { $push: { thoughts: thought._id }},
+            { new: true }
+        );
+    })
+    .then(user => {
+        if (!user) {
+            console.log('No user found with ID:', req.params.id);
+            return res.status(404).json({ message: 'User not found' });
+        }
+        console.log('Updated user:', user);
+        res.json({ message: 'Thought created successfully' });
+    })
+    .catch(err => {
+        console.error('Error in createThought:', err);
+        res.status(500).json(err);
+    });
+},
 
 
 // createThought(req, res) {
