@@ -5,7 +5,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Dependencies](#dependencies)
 - [How to Contribute](#how-to-contribute)
 - [GitHub Repo](#github-repo)
 - [Demonstration Video](#demonstration-video)
@@ -26,14 +26,14 @@ The API provides several routes:
 - **Thought Routes**: For posting thoughts, updating them, and deleting them.
 - **Reaction Routes**: To add reactions to thoughts and remove them.
 
-Example usage:
-```md
-curl -X POST http://localhost:3000/api/thoughts -d '{"thoughtText":"This is a sample thought", "username":"user1"}'
-curl -X POST http://localhost:3000/api/thoughts/{thought_id}/reactions -d '{"reactionBody":"Great thought!", "username":"user2"}'
-```
+Use Insomnia to test each route. 
 
-## Credits
-Developed by [Developer Name or Team], 2024.
+### Dependencies
+The project uses the following npm packages:
+- bcrypt: ^5.1.1
+- dotenv: ^16.4.5
+- express: ^4.19.2
+- mongoose: ^8.3.2
 
 ## How to Contribute
 Interested in contributing? Follow these steps:
